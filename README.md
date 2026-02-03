@@ -16,14 +16,60 @@ A comprehensive REST API testing framework built with Rest Assured, Cucumber BDD
 
 ```
 APIFramework/
-├── src/test/java/
-│   ├── features/          # Cucumber feature files
-│   ├── stepDefination/    # Step definition classes
-│   ├── pojo/              # Plain Old Java Objects for request/response
-│   ├── resources/         # Reusable utility classes
-│   └── cucumber/          # Test runner configuration
-└── pom.xml
+├── src/
+│   ├── main/
+│   │   ├── java/                          # Main source code (if any)
+│   │   └── resources/                     # Main resources
+│   └── test/
+│       ├── java/
+│       │   ├── cucumber/
+│       │   │   └── Options/
+│       │   │       └── TestRunner.java    # Cucumber test runner with tags and plugins
+│       │   ├── features/
+│       │   │   └── placeValidations.feature  # BDD scenarios for Place APIs
+│       │   ├── pojo/
+│       │   │   ├── AddPlace.java          # Request POJO for Add Place API
+│       │   │   └── Location.java          # Location object for coordinates
+│       │   ├── resources/
+│       │   │   ├── APIResources.java      # Enum for API endpoints and HTTP methods
+│       │   │   ├── TestDataBuild.java     # Builder class for test data/payloads
+│       │   │   ├── Utils.java             # Utility methods (API calls, JSON parsing)
+│       │   │   └── global.properties      # Configuration (base URL, endpoints)
+│       │   └── stepDefination/
+│       │       ├── Hooks.java             # Cucumber hooks (Before/After scenarios)
+│       │       └── StepDefination.java    # Step definitions for feature files
+│       └── resources/                     # Test resources
+├── target/                                # Build output directory
+│   ├── cucumber-reports/                  # Generated test reports
+│   └── jsonReports/                       # JSON format reports
+├── pom.xml                                # Maven configuration and dependencies
+├── .gitattributes                         # Git language detection configuration
+└── README.md                              # Project documentation
 ```
+
+### Key Components
+
+**Feature Files** (`features/`)
+- Contains Gherkin scenarios for API testing
+- Scenario outlines with data tables for parameterized testing
+
+**POJO Classes** (`pojo/`)
+- Java objects for request/response serialization
+- Used with Jackson for JSON conversion
+
+**Resources** (`resources/`)
+- `APIResources.java` - Centralized API endpoint management
+- `TestDataBuild.java` - Dynamic test data creation
+- `Utils.java` - Reusable methods for API requests and validations
+- `global.properties` - Environment configuration
+
+**Step Definitions** (`stepDefination/`)
+- Implementation of Gherkin steps
+- Hooks for setup and teardown operations
+
+**Test Runner** (`cucumber/Options/`)
+- Configures Cucumber execution
+- Defines report formats and tag filters
 
 ## Test Scenarios Covered
 
